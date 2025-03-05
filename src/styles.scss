@@ -1,1 +1,96 @@
 /* You can add global styles to this file, and also import other style files */
+@import "https://s3-us-west-2.amazonaws.com/s.cdpn.io/584938/dashboard.scss";
+$bg: #1b2431;
+$light-text: #738297;
+$dark-text: #273142;
+$light-bg: #313d4f;
+
+body {
+  background-color: $bg;
+  color: #fff;
+  font-family: "Montserrat", "Helvetica", "Open Sans", "Arial";
+  font-size: 13px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+p,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin clear() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.card-list {
+  @include clear();
+  width: 100%;
+}
+
+.card {
+  min-height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: white;
+  padding: 10px;
+  position: relative;
+
+  .zmdi {
+    color: white;
+    font-size: 28px;
+    opacity: 0.3;
+    position: absolute;
+    right: 13px;
+    top: 13px;
+  }
+
+  .stat {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 8px;
+    margin-top: 25px;
+    padding: 10px 10px 0;
+    text-transform: uppercase;
+  }
+
+  .title {
+    display: inline-block;
+    font-size: 8px;
+    padding: 10px 10px 0;
+    text-transform: uppercase;
+  }
+
+  .value {
+    font-size: 28px;
+    padding: 0 10px;
+  }
+
+  &.blue {
+    background-color: #2298f1;
+  }
+
+  &.green {
+    background-color: #66b92e;
+  }
+
+  &.orange {
+    background-color: #da932c;
+  }
+
+  &.red {
+    background-color: #d65b4a;
+  }
+}
