@@ -4,5 +4,5 @@ export * from './module-one';
 export * from './module-three';
 export * from './module-two';
 export * from './page-not-found';
-export * from './gate-in';
+export * from './gate-operation';
 export * from './export';

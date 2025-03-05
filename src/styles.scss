@@ -38,11 +38,16 @@ figure {
   background-color: $bg;
 }
 
+.navbar-brand {
+  background-color: $bg;
+  border-right: 1px solid $dark-text;
+}
+
 .sidebar {
   background-color: $bg;
   box-shadow: none;
   position: relative;
-
+  border-right: 1px solid $dark-text;
   .nav-link {
     border-left: 5px solid transparent;
     color: $light-text;

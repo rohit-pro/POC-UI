@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 text-center">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/" routerLink="/">Company name</a>
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/" routerLink="/">Exim</a>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
       <a class="nav-link" href="/" routerLink="/">Sign out</a>
@@ -11,11 +11,14 @@
     <nav class="col-md-2 d-none d-md-block sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
-          <li *ngFor="let menu of menus" class="nav-item">
-            <a class="nav-link" routerLinkActive="active" [routerLink]="'/' + menu.path" [href]="'/' + menu.path">
-              <i class="zmdi zmdi-widgets"></i>
-              {{menu.label}}
-            </a>
+          <li *ngFor="let menu of menus; let index = index" class="nav-item">
+            <ng-container *ngIf="menu.children">
+              <ng-container *ngTemplateOutlet="menuTemplate; context: {  $implicit: menu, index }"></ng-container>
+            </ng-container>
+            <ng-container *ngIf="!menu.children">
+              <ng-container
+                *ngTemplateOutlet="subMenuTemplate; context: { $implicit: menu, isMenu: true }"></ng-container>
+            </ng-container>
           </li>
         </ul>
       </div>
@@ -25,3 +28,27 @@
     </main>
   </div>
 </div>
+
+<ng-template #menuTemplate let-menu let-index="index">
+  <div (click)="toggleMenu(index)" class="nav-link d-flex justify-content-between">
+    <span class="d-flex align-items-center gap-2">
+      <i *ngIf="menu.class" [class]="menu.class"></i>
+      {{ menu.label }}
+    </span>
+    <i [class]="expandedMenu().get(index) ? 'iconamoon--arrow-up-2' : 'iconamoon--arrow-down-2'"></i>
+  </div>
+  <ng-container *ngIf="expandedMenu().get(index)">
+    <div *ngFor="let subMenu of menu.children ?? []">
+      <ng-container *ngTemplateOutlet="subMenuTemplate; context: { $implicit: subMenu }"></ng-container>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #subMenuTemplate let-subMenu let-isMenu="isMenu">
+  <a class="nav-link d-flex align-items-center gap-2" routerLinkActive="active" [routerLink]="'/' + subMenu.path"
+    [href]="'/' + subMenu.path">
+    <i *ngIf="subMenu.class" [class]="subMenu.class"></i>
+    <i *ngIf="!isMenu" class="zmdi zmdi-widgets"></i>
+    {{ subMenu.label }}
+  </a>
+</ng-template>

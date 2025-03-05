@@ -1,0 +1,1 @@
+export * from './carting.component';

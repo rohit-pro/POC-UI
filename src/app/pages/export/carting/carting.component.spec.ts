@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExportComponent } from './export.component';
+import { CartingComponent } from './carting.component';
 
-describe('ExportComponent', () => {
-  let component: ExportComponent;
-  let fixture: ComponentFixture<ExportComponent>;
+describe('CartingComponent', () => {
+  let component: CartingComponent;
+  let fixture: ComponentFixture<CartingComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ExportComponent]
+      imports: [CartingComponent]
     });
-    fixture = TestBed.createComponent(ExportComponent);
+    fixture = TestBed.createComponent(CartingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

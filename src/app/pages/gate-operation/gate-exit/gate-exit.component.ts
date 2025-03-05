@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-export',
+  selector: 'app-gate-exit',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './export.component.html',
-  styleUrls: ['./export.component.scss']
+  templateUrl: './gate-exit.component.html',
+  styleUrls: ['./gate-exit.component.scss']
 })
-export class ExportComponent {
+export class GateExitComponent {
 
 }
